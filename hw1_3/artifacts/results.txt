@@ -1,0 +1,29 @@
+$ python3 wc --help
+Usage: wc [OPTIONS] [FILE]...
+
+  Simple wc-like program. Print newline, word, and byte counts for each FILE,
+  and a total line if more than one FILE is specified. A word is a non-zero-
+  length sequence of printable characters delimited by white space.
+
+  With no FILE, or when FILE is -, read standard input.
+
+Options:
+  --help  Show this message and exit.
+
+
+$ echo -e "HELLO\n\nWORLD!" | python3 wc
+      3       2      14
+
+
+$ cat ./data/main.cpp | python3 wc
+     21     105     722
+
+
+$ python3 wc ./data/main.cpp 
+ 21 105 722 ./data/main.cpp
+
+
+$ python3 wc ./data/main.*
+ 21 105 722 ./data/main.cpp
+  5   9  82 ./data/main.py
+ 26 114 804 total
