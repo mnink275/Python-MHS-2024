@@ -20,7 +20,8 @@ def from_files(filenames: tuple):
         with open(filename, 'r') as file:
             for line in file:
                 last_lines.append(line)
-        print(f'==> {filename} <==')
+        if len(filenames) > 1:
+            print(f'==> {filename} <==')
         for line in last_lines:
             print(line, end='')
         
