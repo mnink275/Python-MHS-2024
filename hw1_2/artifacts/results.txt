@@ -1,0 +1,88 @@
+$ tail --help
+Usage: tail [OPTION]... [FILE]...
+Print the last 10 lines of each FILE to standard output.
+With more than one FILE, precede each with a header giving the file name.
+
+With no FILE, or when FILE is -, read standard input.
+$ python3 tail --help
+Usage: tail [OPTIONS] [FILE]...
+
+  Simple tail-like program. Print the last 10 lines of each FILE to standard
+  output. With more than one FILE, precede each with a header giving the file
+  name.
+
+  With no FILE, or when FILE is -, read standard input and print the last 17
+  lines.
+
+Options:
+  --help  Show this message and exit.
+
+$ python3 tail ./data/main.*
+==> ./data/main.cpp <==
+    } else {
+        std::cout << "=========== " << 100 << "% ===========" << std::endl;
+    }
+}
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    stupid_loading_bar(50);
+    return 0;
+}
+
+==> ./data/main.py <==
+def hello():
+    print('Hello, world!')
+
+if '__name__' == '__main__':
+    hello()
+$ tail ./data/main.*
+==> ./data/main.cpp <==
+    } else {
+        std::cout << "=========== " << 100 << "% ===========" << std::endl;
+    }
+}
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    stupid_loading_bar(50);
+    return 0;
+}
+
+==> ./data/main.py <==
+def hello():
+    print('Hello, world!')
+
+if '__name__' == '__main__':
+    hello()
+
+
+$ cat ./data/main.cpp | tail
+    } else {
+        std::cout << "=========== " << 100 << "% ===========" << std::endl;
+    }
+}
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    stupid_loading_bar(50);
+    return 0;
+}
+$ cat ./data/main.cpp | python3 tail
+        std::cout << "=========== " << 20 << "% ===========" << std::endl;
+    } else if (loading_percent < 40) {
+        std::cout << "=========== " << 40 << "% ===========" << std::endl;
+    } else if (loading_percent < 60) {
+        std::cout << "=========== " << 60 << "% ===========" << std::endl;
+    } else if (loading_percent < 80) {
+        std::cout << "=========== " << 80 << "% ===========" << std::endl;
+    } else {
+        std::cout << "=========== " << 100 << "% ===========" << std::endl;
+    }
+}
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    stupid_loading_bar(50);
+    return 0;
+}
