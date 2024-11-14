@@ -10,7 +10,7 @@ def from_stdin():
         line_counter += 1
         print(f'{line_counter:>6}  {line}', end='')
 
-def from_files(filenames: list):
+def from_files(filenames: tuple):
     line_counter = 0
     for filename in filenames:
         with open(filename, 'r') as file:
@@ -20,7 +20,7 @@ def from_files(filenames: list):
 
 @click.command()
 @click.argument('filenames', metavar='[FILE]...', required=False, default=None, nargs=-1)
-def nl(filenames):
+def nl(filenames: tuple):
     """
     Simple nl-like program. Works like `nl -b a`.
     Write each FILE to standard output, with line numbers added.
@@ -35,6 +35,3 @@ def nl(filenames):
 
 if __name__ == '__main__':
     nl()
-
-# echo -e "line 1\n\nline 2" | python3 nl -b a
-# 
