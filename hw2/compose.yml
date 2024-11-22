@@ -1,0 +1,11 @@
+name: latex
+
+services:
+  latex:
+    image: latex
+    build:
+      dockerfile: artifacts/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/latex

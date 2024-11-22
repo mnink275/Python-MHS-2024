@@ -1,0 +1,20 @@
+package:
+  name: inktex
+  version: "0.1.0"
+
+source:
+  path: .
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pip
+
+  run:
+    - python >=3.12
+
+about:
+  home: ""
+  summary: "Simple package"
+  license: MIT
