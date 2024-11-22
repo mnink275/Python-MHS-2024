@@ -13,6 +13,7 @@ RUN mkdir -p /miniconda3 && \
 
 ENV PATH="/miniconda3/bin:${PATH}"
 
-RUN conda install ink275::inktex
+RUN conda install -c ink275 inktex && \
+    conda update -c ink275 inktex
 
 CMD ["sh", "-c", "python3 example.py && pdflatex -output-directory=artifacts/ result.tex"]

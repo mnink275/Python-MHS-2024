@@ -9,16 +9,13 @@ def save_latex(latex: str, filename: str):
     with open(filename, "w") as file:
         file.write(latex)
 
-def generate_latex(table: Table) -> str:
+def generate_latex(table: Table, image: Image) -> str:
     with open("data/latex_template.tex", "r") as file:
         latex_template = file.read()
 
-    latex_table = generate_table(table)
-    latex_image = generate_image(image)
-    latex = latex_template.replace("TABLE_PLACEHOLDER", latex_table) \
-                            .replace("IMAGE_PLACEHOLDER", latex_image)
+    return latex_template.replace("TABLE_PLACEHOLDER", generate_table(table)) \
+                            .replace("IMAGE_PLACEHOLDER", generate_image(image))
 
-    return latex
 
 if __name__ == '__main__':
     table = Table(
@@ -37,5 +34,5 @@ if __name__ == '__main__':
         width_scale=0.8
     )
 
-    latex = generate_latex(table)
+    latex = generate_latex(table, image)
     save_latex(latex, "artifacts/result.tex")

@@ -9,26 +9,28 @@ class Table:
 def generate_table(table: Table) -> str:
     cols_count = len(table.col_names)
 
-    table_template = r"""
-\begin{table}[ht!]
-\centering
-\begin{tabular}"""
+    latex_table = [
+        r"\begin{table}[ht!]",
+        r"\centering",
+        r"\begin{tabular}{" + "|".join(["c"] * cols_count) + "}",
+        r"\\\hline"
+    ]
 
-    table_template += f"{{{"|".join(["c"] * cols_count)}}}\n"
-    table_template += f"{"&".join(table.col_names)}" +  r"\\\hline" + "\n"
-    for idx, row in enumerate(table.rows):
-        table_template += f"{"&".join([str(cell) for cell in row])}"
-        if idx != len(table.rows) - 1:
-            table_template += r"\\"
-        table_template += "\n" 
+    latex_table.append("&".join(table.col_names) + r"\\\hline")
 
-    table_template += r"""
-\end{tabular}
-\caption{""" + table.caption + r"""}
-\end{table}
-"""
+    rows = "\n".join(
+        " & ".join(map(str, row)) + (r"\\" if idx != len(table.rows) - 1 else "")
+        for idx, row in enumerate(table.rows)
+    )
 
-    return table_template
+    latex_table.extend([
+        rows,
+        r"\end{tabular}",
+        r"\caption{" + table.caption + "}",
+        r"\end{table}"
+    ])
+
+    return "\n".join(latex_table)
 
 @dataclass
 class Image:
@@ -37,15 +39,12 @@ class Image:
     width_scale: float
 
 def generate_image(image: Image) -> str:
-    image_template = r"""
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=WIDTH_SCALE\linewidth]{FILENAME}
-\caption{CAPTION}
-\end{figure}
-"""
-    image_template = image_template.replace("WIDTH_SCALE", str(image.width_scale))
-    image_template = image_template.replace("FILENAME", image.filename)
-    image_template = image_template.replace("CAPTION", image.caption)
-
-    return image_template
+    latex_image = [
+        r"\begin{figure}[ht!]",
+        r"\centering",
+        r"\includegraphics[width=" + f"{image.width_scale}" + r"\linewidth]" + "{" + image.filename + "}",
+        r"\caption{" + image.caption + "}",
+        r"\end{figure}"
+    ]
+    
+    return "\n".join(latex_image)
