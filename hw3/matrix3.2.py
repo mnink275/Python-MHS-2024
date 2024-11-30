@@ -71,7 +71,7 @@ if __name__ == '__main__':
     a = Matrix(a_data.tolist())
     b = Matrix(b_data.tolist())
 
-    path = 'hw3/artifacts/3.2/'
+    path = 'artifacts/3.2/'
     (a + b).serialize(path + 'matrix+.txt')
     (a - b).serialize(path + 'matrix-.txt')
     (a * b).serialize(path + 'matrix*.txt')

@@ -62,7 +62,7 @@ if __name__ == '__main__':
     a = Matrix(data=a_data.tolist())
     b = Matrix(data=b_data.tolist())
 
-    path = 'hw3/artifacts/3.1/'
+    path = 'artifacts/3.1/'
     with open(path + 'matrix+.txt', 'w') as output:
         output.write(str(a + b))
 
