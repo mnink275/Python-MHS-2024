@@ -29,4 +29,5 @@ python3 matrix3.2.py
 ```
 cd hw4/
 python3 task_4_1.py
+python3 task_4_2.py
 ```
